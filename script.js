@@ -1,4 +1,4 @@
-const secretCode = "ITSMYBDAY";
+const secretCode = "HAPPY2026";
 
 function checkCode(){
 
