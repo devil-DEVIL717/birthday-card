@@ -1,40 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Birthday Surprise</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Surprise 🎂</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 </head>
 <body>
 
 <div id="codeScreen">
-    <h1>🎁 Enter Birthday Code</h1>
-    <input type="text" id="codeInput" placeholder="Enter code">
-    <button onclick="checkCode()">Unlock</button>
+
+    <h1>🎁 Birthday Surprise 🎁</h1>
+
+    <input
+        type="text"
+        id="codeInput"
+        placeholder="Enter Secret Code">
+
+    <br>
+
+    <button onclick="checkCode()">
+        Unlock
+    </button>
+
 </div>
 
 <div id="birthdayScreen" class="hidden">
 
-    <h1 class="birthday-title">🎉 HAPPY BIRTHDAY! 🎉</h1>
+    <h1 class="title">
+        🎉 HAPPY BIRTHDAY 🎉
+    </h1>
 
-    <div id="cakeContainer">
+    <p class="instruction">
+        Drag the knife through the cake!
+    </p>
+
+    <div id="cakeArea">
+
+        <div id="knife">🔪</div>
+
         <div id="cake">🎂</div>
-        <button id="cutBtn" onclick="cutCake()">🔪 Cut Cake</button>
+
     </div>
 
     <div id="message" class="hidden">
+
         <h2>🎊 Surprise! 🎊</h2>
 
-        <p>
-            Wishing you endless happiness,
-            amazing memories,
-            good health and lots of success.
-            Have an incredible birthday! ❤️
-        </p>
+        <p id="typedMessage"></p>
+
     </div>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script src="script.js"></script>
 
 </body>
