@@ -1,63 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Surprise 🎂</title>
+<title>Definitely Normal Birthday Card</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
 
+    /* CHANGE THIS TO YOUR IMAGE */
+    background:url("background.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    font-family:Comic Sans MS,cursive;
+    text-align:center;
+}
+
+h1{
+    margin-top:50px;
+    color:white;
+    text-shadow:3px 3px 5px black;
+    transform:rotate(-3deg);
+}
+
+#giftBtn{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    padding:20px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.fakeBtn{
+    position:absolute;
+    padding:10px;
+}
+
+#message{
+    display:none;
+    margin-top:100px;
+    background:white;
+    width:70%;
+    margin-left:auto;
+    margin-right:auto;
+    padding:20px;
+    border-radius:20px;
+    transform:rotate(2deg);
+}
+
+.spin{
+    animation:spin 2s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+</style>
 </head>
+
 <body>
 
-<div id="codeScreen">
+<h1 class="spin">🎉 TOTALLY SERIOUS BIRTHDAY CARD 🎉</h1>
 
-    <h1>🎁 Birthday Surprise 🎁</h1>
+<button id="giftBtn">
+🎁 OPEN GIFT
+</button>
 
-    <input
-        type="text"
-        id="codeInput"
-        placeholder="Enter Secret Code">
+<button class="fakeBtn" style="top:20%;left:10%">
+DO NOT CLICK
+</button>
 
-    <br>
+<button class="fakeBtn" style="top:70%;left:80%">
+FREE MONEY
+</button>
 
-    <button onclick="checkCode()">
-        Unlock
-    </button>
+<button class="fakeBtn" style="top:30%;left:75%">
+100% SAFE
+</button>
 
+<div id="message">
+<h2>🎂 HAPPY BIRTHDAY 🎂</h2>
+
+<p>
+I made you click a button for no reason.
+</p>
+
+<p>
+Hope your day is full of cake,
+laughter and absolutely zero homework.
+</p>
+
+<p>
+Have an awesome birthday! 🎉🎈🎂
+</p>
 </div>
 
-<div id="birthdayScreen" class="hidden">
+<script>
 
-    <h1 class="title">
-        🎉 HAPPY BIRTHDAY 🎉
-    </h1>
+const btn=document.getElementById("giftBtn");
 
-    <p class="instruction">
-        Drag the knife through the cake!
-    </p>
+let escapes=0;
 
-    <div id="cakeArea">
+btn.addEventListener("mouseover",()=>{
 
-        <div id="knife">🔪</div>
+    if(escapes<8){
 
-        <div id="cake">🎂</div>
+        btn.style.left=
+        Math.random()*80+10+"%";
 
-    </div>
+        btn.style.top=
+        Math.random()*80+10+"%";
 
-    <div id="message" class="hidden">
+        escapes++;
 
-        <h2>🎊 Surprise! 🎊</h2>
+    }else{
 
-        <p id="typedMessage"></p>
+        btn.innerHTML="Fine. You Win.";
 
-    </div>
+    }
 
-</div>
+});
 
-<script src="script.js"></script>
+btn.addEventListener("click",()=>{
+
+    document.getElementById("message").style.display="block";
+
+    btn.style.display="none";
+
+    for(let i=0;i<20;i++){
+
+        const emoji=document.createElement("div");
+
+        emoji.innerHTML="🎉";
+
+        emoji.style.position="absolute";
+
+        emoji.style.left=Math.random()*100+"vw";
+
+        emoji.style.top=Math.random()*100+"vh";
+
+        emoji.style.fontSize="40px";
+
+        document.body.appendChild(emoji);
+
+    }
+
+});
+
+document.querySelectorAll(".fakeBtn").forEach(button=>{
+
+    button.onclick=()=>{
+
+        const messages=[
+            "Nice try.",
+            "That button is useless.",
+            "Wrong button.",
+            "Keep searching.",
+            "Why would you click that?"
+        ];
+
+        alert(
+            messages[
+                Math.floor(Math.random()*messages.length)
+            ]
+        );
+
+    };
+
+});
+
+</script>
 
 </body>
 </html>
